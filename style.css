@@ -52,8 +52,11 @@ i {
     top: 0;
     left: 0;
     perspective: 1500px;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
+}
+
+.front {
+    backface-visibility: hidden;
+    border-left: 3px solid #dac400;
 }
 
 .front, 
@@ -69,21 +72,14 @@ i {
     background-color: white;
     transform-origin: left;
     transition: transform 0.5s;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
 }
 
 .front {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    border-left: 3px solid #dac400;
     z-index: 1;
 }
 
 .back {
     z-index: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 .front-content,
@@ -94,22 +90,16 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
 }
 
 .back-content {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
+    transform: rotateY(180deg)
 }
 
 /* Paper Flipped */
 .flipped .front,
 .flipped .back {
-    transform: rotateY(-180deg);
-    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg)
 }
 
 /* Paper Z-index */
