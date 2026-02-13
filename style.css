@@ -94,7 +94,6 @@ i {
 
 .back {
     z-index: 0;
-    
 }
 
 .front-content{
@@ -107,7 +106,7 @@ i {
     align-items: center;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    
+    overflow: hidden;
 }
 
 .back-content {
@@ -120,7 +119,7 @@ i {
     align-items: center;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    
+    overflow: hidden;
 }
 
 .back-content {
