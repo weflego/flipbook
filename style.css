@@ -89,6 +89,7 @@ i {
 
 .back {
     z-index: 0;
+    transform: rotateY(180deg);
 }
 
 .front-content,
@@ -101,9 +102,9 @@ i {
     align-items: center;
 }
 
-.back-content {
-    transform: rotateY(180deg)
-}
+
+    
+
 
 /* Paper Flipped */
 .flipped .front,
