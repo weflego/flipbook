@@ -39,9 +39,9 @@ i {
 
 /* Book */
 .book {
-    width: 90vw;
+    width: 70vw;
     max-width: 350px;
-    height: 70vh;
+    height: 60vh;
     max-height: 500px;
     position: relative;
     transition: transform 0.5s;
@@ -150,4 +150,5 @@ i {
 #b1 p {
     margin-bottom: 20px;
 }
+
 
