@@ -119,8 +119,6 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     overflow: hidden;
     transform: rotateY(180deg)
 }
@@ -177,5 +175,9 @@ i {
 
 #b1 p {
     margin-bottom: 20px;
+}
+
+.content {
+    overflow: hidden;
 }
 
