@@ -119,11 +119,9 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     overflow: hidden;
-}
-
-.back-content {
     transform: rotateY(180deg)
 }
 
