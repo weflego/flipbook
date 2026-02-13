@@ -81,6 +81,8 @@ i {
     transition: transform 0.5s;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
     
     
 }
