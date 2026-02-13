@@ -45,6 +45,7 @@ i {
     max-height: 500px;
     position: relative;
     transition: transform 0.5s;
+    perspective: 1500px;
     transform-style: preserve-3d;
     will-change: trasform;
 }
@@ -78,7 +79,7 @@ i {
     background-color: white;
     transform-origin: left;
     transition: transform 0.5s;
-    transform: translateZ(0);
+    
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
@@ -107,10 +108,10 @@ i {
 
 
 /* Paper Flipped */
-.flipped .front,
-.flipped .back {
-    transform: rotateY(-180deg)
+.paper.flipped {
+    transform: rotateY(-180deg);
 }
+
 
 /* Paper Z-index */
 #p1 {
