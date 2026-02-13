@@ -58,8 +58,7 @@ i {
     perspective: 1500px;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    clip-path: inset(0);
-    -webkit-clip-path: inset(0);
+    
 }
 
 .front {
@@ -83,8 +82,7 @@ i {
     transition: transform 0.5s;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+   
 }
     
     
@@ -95,14 +93,10 @@ i {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-left: white solid 2px;
-    clip-path: inset(0);
-    -webkit-clip-path: inset(0);
 }
 
 .back {
     z-index: 0;
-    clip-path: inset(0);
-    -webkit-clip-path: inset(0);
 }
 
 .front-content{
@@ -129,10 +123,11 @@ i {
     overflow: hidden;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    
+}
+.back-content {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
-    clip-path: inset(0);
-    -webkit-clip-path: inset(0);
 }
 
 /* Paper Flipped */
@@ -183,10 +178,12 @@ i {
     font-size: 2em;
     margin-top: 10px;
     margin-bottom: 20px;
+    
 }
 
 #b1 p {
     margin-bottom: 20px;
+    
 }
 
 .content {
