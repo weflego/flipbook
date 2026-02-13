@@ -123,13 +123,14 @@ i {
 /* Customization */
 
 .book-title {
-    font-size: 3em;
+    font-size: clamp(1.8em, 5vw, 3em);
     margin-bottom: 40px;
 }
 
 .cover-img {
-    width: 200px;
-    height: 270px;
+    width: 60%;
+    max-width: 220px;
+    height: auto;
     object-fit: cover;
     border-radius: 30px;
 }
@@ -137,7 +138,9 @@ i {
 #b1 {
     padding: 20px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+
+
     justify-content: space-around;
 }
 
@@ -150,5 +153,4 @@ i {
 #b1 p {
     margin-bottom: 20px;
 }
-
 
