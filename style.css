@@ -81,8 +81,7 @@ i {
     transition: transform 0.5s;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+   
 }
     
     
@@ -123,6 +122,9 @@ i {
     overflow: hidden;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    
+}
+.back-content {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
 }
@@ -175,10 +177,14 @@ i {
     font-size: 2em;
     margin-top: 10px;
     margin-bottom: 20px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 #b1 p {
     margin-bottom: 20px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .content {
