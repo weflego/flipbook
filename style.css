@@ -79,7 +79,8 @@ i {
     transform-origin: left;
     transition: transform 0.5s;
     transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d; 
+    -webkit-transform-style: preserve-3d;
+    
     
 }
 
@@ -103,6 +104,8 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     
 }
 
