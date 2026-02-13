@@ -52,6 +52,8 @@ i {
     top: 0;
     left: 0;
     perspective: 1500px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 .front {
@@ -75,6 +77,8 @@ i {
     transition: transform 0.5s;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 .front {
@@ -93,11 +97,15 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
 }
 
 .back-content {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 /* Paper Flipped */
