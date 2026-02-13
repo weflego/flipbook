@@ -12,7 +12,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
-    background-color: #dac400;
+    background-image: url('./heartsbackground.jpg');
+    background-color: #ec15c5;
 }
 
 /* Button */
@@ -56,7 +57,7 @@ i {
 
 .front {
     backface-visibility: hidden;
-    border-left: 3px solid #dac400;
+    border-left: 3px solid darkred;
 }
 
 .front, 
@@ -69,13 +70,15 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: darkred;
     transform-origin: left;
     transition: transform 0.5s;
 }
 
 .front {
     z-index: 1;
+    backface-visibility: hidden;
+    border-left: white solid 2px;
 }
 
 .back {
@@ -84,6 +87,7 @@ i {
 
 .front-content,
 .back-content {
+    color: white;
     width: 100%;
     height: 100%;
     display: flex;
@@ -118,7 +122,11 @@ i {
 /* Customization */
 
 .book-title {
-    font-size: 3em;
+    font-family: cursive;
+    font-style: oblique;
+    text-align: center;
+    color: white;
+    font-size: 2em;
     margin-bottom: 40px;
 }
 
