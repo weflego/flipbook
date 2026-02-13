@@ -44,6 +44,9 @@ i {
     height: 500px;
     position: relative;
     transition: transform 0.5s;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    
 }
 
 .paper {
@@ -94,6 +97,7 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .back-content {
@@ -123,7 +127,7 @@ i {
 
 .book-title {
     font-family: cursive;
-    font-style: oblique;
+    font-style: italic;
     text-align: center;
     color: white;
     font-size: 2em;
