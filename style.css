@@ -82,6 +82,8 @@ i {
 
 .back {
     z-index: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .front-content,
