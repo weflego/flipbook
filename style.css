@@ -7,7 +7,7 @@
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,16 +39,11 @@ i {
 
 /* Book */
 .book {
-    width: 70vw;
-    max-width: 350px;
-    height: 60vh;
-    max-height: 500px;
+    width: 350px;
+    height: 500px;
     position: relative;
     transition: transform 0.5s;
-    transform-style: preserve-3d;
-    will-change: trasform;
 }
-
 
 .paper {
     height: 100%;
@@ -123,14 +118,13 @@ i {
 /* Customization */
 
 .book-title {
-    font-size: clamp(1.8em, 5vw, 3em);
+    font-size: 3em;
     margin-bottom: 40px;
 }
 
 .cover-img {
-    width: 60%;
-    max-width: 220px;
-    height: auto;
+    width: 200px;
+    height: 270px;
     object-fit: cover;
     border-radius: 30px;
 }
@@ -138,9 +132,7 @@ i {
 #b1 {
     padding: 20px;
     text-align: center;
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-
-
+    font-size: 1.2em;
     justify-content: space-around;
 }
 
