@@ -82,6 +82,8 @@ i {
 
 .back {
     z-index: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .front-content,
@@ -101,8 +103,6 @@ i {
     -webkit-transform: rotateY(180deg);
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 /* Paper Flipped */
