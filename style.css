@@ -45,7 +45,6 @@ i {
     max-height: 500px;
     position: relative;
     transition: transform 0.5s;
-    perspective: 1500px;
     transform-style: preserve-3d;
     will-change: trasform;
 }
@@ -58,7 +57,6 @@ i {
     top: 0;
     left: 0;
     perspective: 1500px;
-    transform-style: preserve-3d;
 }
 
 .front {
@@ -79,9 +77,6 @@ i {
     background-color: white;
     transform-origin: left;
     transition: transform 0.5s;
-    
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 .front {
@@ -90,7 +85,6 @@ i {
 
 .back {
     z-index: 0;
-    transform: rotateY(180deg);
 }
 
 .front-content,
@@ -103,15 +97,15 @@ i {
     align-items: center;
 }
 
-
-    
-
-
-/* Paper Flipped */
-.paper.flipped {
-    transform: rotateY(-180deg);
+.back-content {
+    transform: rotateY(180deg)
 }
 
+/* Paper Flipped */
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg)
+}
 
 /* Paper Z-index */
 #p1 {
@@ -151,21 +145,12 @@ i {
 }
 
 #b1 h2 {
-    font-size:clamp(0.9rem, 2.5vw, 1.2rem);
+    font-size: 2em;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 #b1 p {
     margin-bottom: 20px;
-}
-@media (max-width: 480px) {
-    i {
-        font-size: 2.5em;
-    }
-
-    button {
-        margin: 5px;
-    }
 }
 
