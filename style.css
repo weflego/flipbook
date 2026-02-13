@@ -107,7 +107,7 @@ i {
 }
 
 .back-content {
-    transform: rotateY(180deg) translateZ(-1px);
+    transform: rotateY(180deg)
 }
 
 /* Paper Flipped */
