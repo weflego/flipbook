@@ -1,5 +1,4 @@
 /* General */
-
 * {
     margin: 0;
     padding: 0;
@@ -25,13 +24,8 @@ button {
     transition: transform 0.5s;
 }
 
-button:focus {
-    outline: none;
-}
-
-button:hover i {
-    color: rgb(102, 102, 102);
-}
+button:focus { outline: none; }
+button:hover i { color: rgb(102, 102, 102); }
 
 i {
     color: gray;
@@ -46,23 +40,22 @@ i {
     transition: transform 0.5s;
 }
 
-/*
- * Safari/iOS fix:
- * DO NOT use transform-style: preserve-3d on .paper.
- * Give .paper a perspective so children get the 3D flip effect,
- * then handle each face with backface-visibility: hidden independently.
- * The .back is pre-rotated 180deg; its content is counter-rotated so text reads correctly.
- */
+/* Each paper stacks absolutely */
 .paper {
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-perspective: 1500px;
-    perspective: 1500px;
 }
 
+/*
+ * SAFARI-SAFE FLIP APPROACH
+ * Instead of relying on CSS backface-visibility (broken on iOS Safari),
+ * we animate scaleX: 1 → 0 (fold), swap front/back visibility at midpoint,
+ * then scaleX: 0 → 1 (unfold). JS handles the swap timing.
+ * transform-origin is left center so it folds from the spine.
+ */
 .front,
 .back {
     position: absolute;
@@ -76,38 +69,20 @@ i {
     background-color: darkred;
     border: white solid 2px;
     transform-origin: left center;
-    transition: transform 0.5s;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
 }
 
 .front {
     z-index: 1;
     border-left: white solid 2px;
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
 }
 
 .back {
     z-index: 0;
-    /* Pre-rotated so it faces away and is hidden until the paper flips */
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+    /* Back starts hidden — JS shows it after front folds away */
+    display: none;
 }
 
-.front-content {
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: cursive;
-    font-style: italic;
-    overflow: hidden;
-}
-
+.front-content,
 .back-content {
     color: white;
     width: 100%;
@@ -119,16 +94,17 @@ i {
     font-family: cursive;
     font-style: italic;
     overflow: hidden;
-    /* Counter-rotate content so text is readable (not mirrored) when back face is visible */
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
 }
 
-/* Paper Flipped */
-.flipped .front,
-.flipped .back {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+/* JS adds .folding to trigger the CSS transition */
+.paper.folding .front,
+.paper.folding .back {
+    transition: transform 0.25s ease-in;
+}
+
+.paper.unfolding .front,
+.paper.unfolding .back {
+    transition: transform 0.25s ease-out;
 }
 
 /* Paper Z-index */
@@ -137,7 +113,6 @@ i {
 #p3 { z-index: 1; }
 
 /* Customization */
-
 .book-title {
     font-family: cursive;
     font-style: italic;
@@ -154,29 +129,15 @@ i {
     border-radius: 30px;
 }
 
-#b1 {
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    justify-content: space-around;
-}
-
+#b1 { padding: 20px; text-align: center; font-size: 1.2em; justify-content: space-around; }
 #b1 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
 #b1 p  { margin-bottom: 20px; }
 #b1 i  { color: white; font-size: 1.5em; margin-bottom: 20px; }
 
-#f2 {
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    justify-content: space-around;
-    position: relative;
-}
-
+#f2 { padding: 20px; text-align: center; font-size: 1.2em; justify-content: space-around; position: relative; }
 #f2 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
 #f2 p  { margin-bottom: 20px; }
 #f2 i  { color: white; font-size: 1em; margin-bottom: 0; position: absolute; }
-
 #f2 i:nth-child(1) { top: 10px; right: 10px; }
 #f2 i:nth-child(2) { top: 10px; right: 35px; }
 #f2 i:nth-child(3) { top: 25px; right: 22px; }
@@ -184,17 +145,10 @@ i {
 #f2 i:nth-child(5) { bottom: 10px; left: 35px; }
 #f2 i:nth-child(6) { bottom: 25px; left: 22px; }
 
-#b2 {
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    justify-content: space-around;
-}
-
+#b2 { padding: 20px; text-align: center; font-size: 1.2em; justify-content: space-around; }
 #b2 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
 #b2 p  { margin-bottom: 20px; }
 #b2 i  { color: white; font-size: 1em; margin-bottom: 0; position: absolute; }
-
 #b2 i:nth-child(1) { top: 10px; right: 10px; }
 #b2 i:nth-child(2) { top: 10px; right: 35px; }
 #b2 i:nth-child(3) { top: 25px; right: 22px; }
@@ -202,17 +156,10 @@ i {
 #b2 i:nth-child(5) { bottom: 10px; left: 35px; }
 #b2 i:nth-child(6) { bottom: 25px; left: 22px; }
 
-#f3 {
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    justify-content: space-around;
-}
-
+#f3 { padding: 20px; text-align: center; font-size: 1.2em; justify-content: space-around; }
 #f3 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
 #f3 p  { margin-bottom: 8px; }
 #f3 i  { color: white; font-size: 1em; margin-bottom: 0; position: absolute; }
-
 #f3 i:nth-child(1) { top: 10px; right: 10px; }
 #f3 i:nth-child(2) { top: 10px; right: 35px; }
 #f3 i:nth-child(3) { top: 25px; right: 22px; }
@@ -220,17 +167,9 @@ i {
 #f3 i:nth-child(5) { bottom: 10px; left: 35px; }
 #f3 i:nth-child(6) { bottom: 25px; left: 22px; }
 
-#b3 {
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    justify-content: space-around;
-}
-
+#b3 { padding: 20px; text-align: center; font-size: 1.2em; justify-content: space-around; }
 #b3 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
 #b3 p  { margin-bottom: 20px; }
 #b3 i  { color: white; font-size: 1.5em; margin-bottom: 20px; }
 
-.content {
-    overflow: hidden;
-}
+.content { overflow: hidden; }
