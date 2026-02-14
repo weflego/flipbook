@@ -21,6 +21,12 @@ function openBook() {
     book.style.transform = "translateX(50%)";
     prevBtn.style.transform = "translateX(-180px)";
     nextBtn.style.transform = "translateX(180px)";
+    
+        // Start background audio when first page is flipped
+        const bgAudio = document.getElementById('bg-audio');
+        if (bgAudio && bgAudio.paused) {
+            bgAudio.play();
+        }
 }
 
 function closeBook(isFirstPage) {

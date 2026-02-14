@@ -44,30 +44,26 @@ i {
     height: 500px;
     position: relative;
     transition: transform 0.5s;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    
 }
 
+/*
+ * Safari/iOS fix:
+ * DO NOT use transform-style: preserve-3d on .paper.
+ * Give .paper a perspective so children get the 3D flip effect,
+ * then handle each face with backface-visibility: hidden independently.
+ * The .back is pre-rotated 180deg; its content is counter-rotated so text reads correctly.
+ */
 .paper {
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    -webkit-perspective: 1500px;
     perspective: 1500px;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    
 }
 
-.front {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    border-left: 3px solid darkred;
-}
-
-.front, 
+.front,
 .back {
     position: absolute;
     width: 100%;
@@ -78,76 +74,67 @@ i {
     justify-content: center;
     align-items: center;
     background-color: darkred;
-    transform-origin: left;
+    border: white solid 2px;
+    transform-origin: left center;
     transition: transform 0.5s;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-   
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
-    
-    
-
 
 .front {
     z-index: 1;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     border-left: white solid 2px;
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
 }
 
 .back {
     z-index: 0;
-}
-
-.front-content{
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    overflow: hidden;
-}
-
-.back-content {
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    
-}
-.back-content {
-    transform: rotateY(180deg);
+    /* Pre-rotated so it faces away and is hidden until the paper flips */
     -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.front-content {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+    font-style: italic;
+    overflow: hidden;
+}
+
+.back-content {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+    font-style: italic;
+    overflow: hidden;
+    /* Counter-rotate content so text is readable (not mirrored) when back face is visible */
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 /* Paper Flipped */
 .flipped .front,
 .flipped .back {
-    transform: rotateY(-180deg)
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
 /* Paper Z-index */
-#p1 {
-    z-index: 3;
-}
-
-#p2 {
-    z-index: 2;
-}
-
-#p3 {
-    z-index: 1;
-}
+#p1 { z-index: 3; }
+#p2 { z-index: 2; }
+#p3 { z-index: 1; }
 
 /* Customization */
 
@@ -174,19 +161,76 @@ i {
     justify-content: space-around;
 }
 
-#b1 h1 {
-    font-size: 2em;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    
+#b1 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
+#b1 p  { margin-bottom: 20px; }
+#b1 i  { color: white; font-size: 1.5em; margin-bottom: 20px; }
+
+#f2 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+    position: relative;
 }
 
-#b1 p {
-    margin-bottom: 20px;
-    
+#f2 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
+#f2 p  { margin-bottom: 20px; }
+#f2 i  { color: white; font-size: 1em; margin-bottom: 0; position: absolute; }
+
+#f2 i:nth-child(1) { top: 10px; right: 10px; }
+#f2 i:nth-child(2) { top: 10px; right: 35px; }
+#f2 i:nth-child(3) { top: 25px; right: 22px; }
+#f2 i:nth-child(4) { bottom: 10px; left: 10px; }
+#f2 i:nth-child(5) { bottom: 10px; left: 35px; }
+#f2 i:nth-child(6) { bottom: 25px; left: 22px; }
+
+#b2 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
 }
+
+#b2 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
+#b2 p  { margin-bottom: 20px; }
+#b2 i  { color: white; font-size: 1em; margin-bottom: 0; position: absolute; }
+
+#b2 i:nth-child(1) { top: 10px; right: 10px; }
+#b2 i:nth-child(2) { top: 10px; right: 35px; }
+#b2 i:nth-child(3) { top: 25px; right: 22px; }
+#b2 i:nth-child(4) { bottom: 10px; left: 10px; }
+#b2 i:nth-child(5) { bottom: 10px; left: 35px; }
+#b2 i:nth-child(6) { bottom: 25px; left: 22px; }
+
+#f3 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+}
+
+#f3 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
+#f3 p  { margin-bottom: 8px; }
+#f3 i  { color: white; font-size: 1em; margin-bottom: 0; position: absolute; }
+
+#f3 i:nth-child(1) { top: 10px; right: 10px; }
+#f3 i:nth-child(2) { top: 10px; right: 35px; }
+#f3 i:nth-child(3) { top: 25px; right: 22px; }
+#f3 i:nth-child(4) { bottom: 10px; left: 10px; }
+#f3 i:nth-child(5) { bottom: 10px; left: 35px; }
+#f3 i:nth-child(6) { bottom: 25px; left: 22px; }
+
+#b3 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+}
+
+#b3 h1 { font-size: 2em; margin-top: 10px; margin-bottom: 20px; }
+#b3 p  { margin-bottom: 20px; }
+#b3 i  { color: white; font-size: 1.5em; margin-bottom: 20px; }
 
 .content {
     overflow: hidden;
 }
-
